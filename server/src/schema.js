@@ -101,20 +101,35 @@ const typeDefs = gql`
     lastName: String!
   }
 
+  type Instrument {
+    id: String!
+    year: String!
+    brand: String!
+    model: String!
+    price: String!
+    artistid: String!
+  }
+
   type Query {
     artists: [Artist]
+    instruments: [Instrument]
   }
 
   type Mutation {
     addArtist(id: String!, firstName: String!, lastName: String!): Artist
     updateArtist(id: String!, firstName: String!, lastName: String!): Artist
     removeArtist(id: String!): Artist
+
+    addInstrument(id: String!, year: String!, brand: String!, model: String!, price: String!, artistid: String!): Instrument
+    updateInstrument(id: String!, year: String!, brand: String!, model: String!, price: String!, artistid: String!): Instrument
+    removeInstrument(id: String!): Instrument
   }
 `
 
 const resolvers = {
   Query: {
-    artists: () => artists
+    artists: () => artists,
+    instruments: () => instruments
   },
   Mutation: {
     addArtist: (root, args) => {
@@ -145,7 +160,20 @@ const resolvers = {
         return a.id === removedArtist.id
       })
       return removedArtist
-    }
+    },
+
+    addInstrument: (root, args) => {
+      const newInstrument = {
+        id: args.id,
+        year: args.year,
+        brand: args.brand,
+        model: args.model,
+        price: args.price,
+        artistid: args.artistid
+      }
+      instruments.push(newInstrument)
+      return newInstrument
+    },
   }
 }
 export { typeDefs, resolvers }
