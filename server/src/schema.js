@@ -174,6 +174,16 @@ const resolvers = {
       instruments.push(newInstrument)
       return newInstrument
     },
+    updateArtist: (root, args) => {
+      const artist = find(artists, { id: args.id })
+      if (!artist) {
+        throw new Error(`Couldn't find artist with id ${args.id}`)
+      }
+
+      artist.firstName = args.firstName
+      artist.lastName = args.lastName
+      return artist
+    },
   }
 }
 export { typeDefs, resolvers }

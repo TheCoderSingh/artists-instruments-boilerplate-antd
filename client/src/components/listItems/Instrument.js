@@ -3,7 +3,7 @@ import { Card, List } from 'antd'
 
 import { EditOutlined } from '@ant-design/icons'
 import UpdateInstrument from '../forms/UpdateInstrument'
-// import RemoveArtist from '../buttons/RemoveArtist'
+import RemoveInstrument from '../buttons/RemoveInstrument'
 
 const getStyles = () => ({
   card: {
@@ -67,7 +67,7 @@ const Instrument = props => {
           <Card
             actions={[
               <EditOutlined key='edit' onClick={handleButtonClick} />,
-              // <RemoveArtist id={id} firstName={firstName} lastName={lastName} />
+              <RemoveInstrument id={id} year={year} brand={brand} model={model} price={price} artistid={artistid} />
             ]}
             style={styles.card}
           >
