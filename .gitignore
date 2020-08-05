@@ -9,8 +9,7 @@ logs
 **/*.backup.*
 **/*.back.*
 
-client/node_modules
-server/node_modules
+*/node_modules/*
 bower_components
 
 *.sublime*
